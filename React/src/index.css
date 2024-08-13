@@ -1,5 +1,79 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --header-height: 3.5rem;
+  --first-color: hsl(28, 88%, 62%);
+  --title-color: hsl(0, 0%, 95%);
+  --text-color: hsl(0, 0%, 75%);
+  --body-color: hsl(0, 0%, 6%);
+  --body-font: "Montserrat", sans-serif;
+  --second-font: "Dancing Script", cursive;
+  --h2-font-size: 1.25rem;
+  --small-font-size: 0.813rem;
+  --font-semi-bold: 600;
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--text-color);
+  font-family: var(--body-font);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Nav */
+
+.nav {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  position: relative;
+  height: var(--header-height);
+  /* margin: 1rem; */
+  border-bottom: solid white;
+}
+
+.nav > h1 {
+  padding: 0 1rem 0 1rem;
+}
+
+.nav__list {
+  padding: 0 0 0 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  column-gap: 1.5rem;
+}
+
+.nav__link {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  transition: color 0.4s;
+}
+
+.nav__link:hover {
+  color: var(--first-color);
+}
+
+.show-menu {
+  right: 0;
+}
+
+/* Fix below */
+
 .SpellCard {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 255);
   transition: 0.3s;
   padding: 2px 16px;
 }
@@ -7,7 +81,7 @@
 .CardDisplay {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .modal {
@@ -37,43 +111,27 @@
   display: none;
 }
 
-/* Tabs */
-.tab-list {
-  width: fit-content;
-  min-width: 100%;
+/* race list page */
+.create_page_container {
   display: flex;
-  gap: 0.5em;
-  margin: 0;
-  padding: 0;
-  border-bottom: 2px solid #eee;
-  color: #888;
+  flex-direction: row;
 }
-.tab-list li {
-  display: block;
-  margin-bottom: -2px;
+.race_list_container {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
 }
-/* tab button */
-.tab-btn {
-  font: inherit;
-  padding: 0.75em 1em;
-  background-color: transparent;
-  border: 2px solid var(--tab-border-color);
-  border-width: 0 0 2px;
-  cursor: pointer;
-  color: inherit;
-  white-space: nowrap;
+.race_list {
+  font-weight: bold;
+  border: solid white;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  padding: 2rem;
+  color: black;
+  background-color: rgba(253, 253, 250, 1);
+  box-sizing: content-box;
+  width: 80%;
 }
-.tab-btn:not(.tab-btn--active):hover {
-  color: var(--site-text-color);
-}
-.tab-btn--active {
-  color: var(--tab-text-color--highlight);
-  border-color: var(--tab-text-color--highlight);
-}
-/* tab panel */
-.tab-panel {
-  margin-top: 1em;
-  padding: 1em;
-  background-color: var(--tab-panel-bg-color);
-  border-radius: 0.5em;
+.col-2 {
+  width: 50%;
 }

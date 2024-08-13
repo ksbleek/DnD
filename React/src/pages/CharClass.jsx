@@ -4,7 +4,6 @@ import axios from "axios";
 
 function CharClass() {
   const [charClass, setCharClass] = useState([]);
-  const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
     const getCharClass = async () => {
@@ -16,30 +15,13 @@ function CharClass() {
     getCharClass();
   }, []);
   return (
-    <>
-      <div>
-        <h1>Race</h1>
-        <div className="tabs">
-          <nav className="tab-nav">
-            <ul
-              className="tab-list"
-              role="tablist"
-              aria-orientation="horizontal"
-            >
-              {charClass.map((charclass, index) => (
-                <li
-                  key={charclass.name}
-                  className="tab-btn"
-                  onClick={setActiveTab}
-                >
-                  {charclass.name}
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </>
+    <ul>
+      {charClass.map((classes) => (
+        <li className="race_list" key={classes.index}>
+          {classes.name}
+        </li>
+      ))}
+    </ul>
   );
 }
 

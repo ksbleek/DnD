@@ -3,6 +3,7 @@ import App from "./App";
 import HomePage from "./pages/HomePage";
 import AllSpells from "./pages/AllSpells";
 import Race from "./pages/Race";
+import Character_app from "./pages/Characters";
 import CharClass from "./pages/CharClass";
 
 const router = createBrowserRouter([
@@ -15,16 +16,22 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "race/",
-        element: <Race />,
-      },
-      {
         path: "spells/",
         element: <AllSpells />,
       },
       {
-        path: "class/",
-        element: <CharClass />,
+        path: "new_characters/",
+        element: <Character_app />,
+        children: [
+          {
+            index: true,
+            element: <Race />,
+          },
+          {
+            path: "class/",
+            element: <CharClass />,
+          },
+        ],
       },
     ],
   },

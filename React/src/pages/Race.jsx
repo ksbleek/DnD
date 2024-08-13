@@ -3,38 +3,31 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Race() {
-  const [Race, setRace] = useState([]);
+  const [Races, setRaces] = useState([]);
+  const [Race, setRace] = useState({});
 
   useEffect(() => {
     const getRace = async () => {
       const response = await axios.get(`https://www.dnd5eapi.co/api/races`);
       console.log(response.data);
-      setRace(response.data.results);
+      setRaces(response.data.results);
     };
 
     getRace();
   }, []);
   return (
-    <>
-      <div>
-        <h1>Race</h1>
-        <div className="tabs">
-          <nav className="tab-nav">
-            <ul
-              className="tab-list"
-              role="tablist"
-              aria-orientation="horizontal"
-            >
-              {Race.map((race, index) => (
-                <li key={race.name} className="tab-btn">
-                  {race.name}
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
+    <div className="create_page_container">
+      <div className="race_list_container">
+        {Races.map((race) => (
+          <button className="race_list" key={race.index}>
+            {race.name}
+          </button>
+        ))}
       </div>
-    </>
+      <div className="col-2">
+        <p>dfwrefwref</p>
+      </div>
+    </div>
   );
 }
 

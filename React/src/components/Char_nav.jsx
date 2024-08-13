@@ -1,25 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Char_Nav() {
   return (
     <nav className="nav container">
-      <h1>DnD</h1>
-      <div className={"nav__menu"} id="nav-menu">
+      <div className={"char_nav__menu"} id="Char-nav-menu">
         <ul className="nav__list">
           <li className="nav__item">
-            <Link to="/" className="nav__link">
-              Home
+            <Link to="" className="nav__link">
+              Race
             </Link>
           </li>
           <li className="nav__item">
-            <Link to="Characters/" className="nav__link">
-              Characters
-            </Link>
-          </li>
-          <li className="nav__item">
-            <Link to="new_characters/" className="nav__link">
-              Create Character
+            <Link to="class/" className="nav__link">
+              Class
             </Link>
           </li>
           <li className="nav__item">
@@ -33,4 +27,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Char_Nav;

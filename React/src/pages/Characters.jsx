@@ -1,15 +1,14 @@
 import { useState } from "react";
-import "./App.css";
-import Navbar from "./components/Navbar";
+import Char_Nav from "../components/Char_nav";
 import { Outlet } from "react-router-dom";
 
-function App() {
+function Character_app() {
   return (
     <>
-      <Navbar />
+      <Char_Nav />
       <Outlet />
     </>
   );
 }
 
-export default App;
+export default Character_app;
