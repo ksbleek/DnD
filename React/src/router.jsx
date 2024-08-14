@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import AllSpells from "./pages/AllSpells";
 import Race from "./pages/Race";
 import Character_app from "./pages/Characters";
-import CharClass from "./pages/CharClass";
+import CharacterClasses from "./pages/CharClass";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
           },
           {
             path: "class/",
-            element: <CharClass />,
+            element: <CharacterClasses />,
           },
         ],
       },

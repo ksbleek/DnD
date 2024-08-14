@@ -2,6 +2,7 @@ from django.db import models
 from user_app.models import Player
 from django.apps import apps
 from django.core.exceptions import ObjectDoesNotExist
+from race_app.models import race
 
 
 # Create your models here.
@@ -19,6 +20,6 @@ def get_default_characters_list():
 
 class Character(models.Model):
     name = models.CharField(max_length=255)
-    race = models.CharField(max_length=255)
+    race = models.OneToOneField(race, null=True, on_delete=models.CASCADE)
     char_class = models.CharField(max_length=255)
     char_list = models.ForeignKey(Characters_list, default=get_default_characters_list, null=False, on_delete=models.CASCADE, related_name='characters')

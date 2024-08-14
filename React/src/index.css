@@ -120,6 +120,8 @@ a {
   display: flex;
   flex-direction: column;
   width: 25%;
+  overflow: auto;
+  height: 100vh;
 }
 .race_list {
   font-weight: bold;
@@ -134,4 +136,16 @@ a {
 }
 .col-2 {
   width: 50%;
+}
+
+/* classes desc css */
+.class-title {
+  text-align: center;
+}
+.desc-container {
+  width: 100%;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 300px; /* Adjust based on your needs */
+  white-space: pre-wrap; /* Preserve whitespace and line breaks */
+  word-wrap: break-word; /* Prevent overflow */
 }
