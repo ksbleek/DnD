@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'user_app',
     'character_app',
     'party_app',
-    'race_app'
+    'race_app',
+    'class_app'
 ]
 
 MIDDLEWARE = [

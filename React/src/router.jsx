@@ -5,6 +5,7 @@ import AllSpells from "./pages/AllSpells";
 import Race from "./pages/Race";
 import Character_app from "./pages/Characters";
 import CharacterClasses from "./pages/CharClass";
+import SignUp from "./pages/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "spells/",
         element: <AllSpells />,
+      },
+      {
+        path: "signup/",
+        element: <SignUp />,
       },
       {
         path: "new_characters/",

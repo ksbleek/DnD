@@ -27,6 +27,11 @@ function Navbar() {
               Spells
             </Link>
           </li>
+          <li className="nav__item">
+            <Link to="signup/" className="nav__link">
+              Signup
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>
