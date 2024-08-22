@@ -289,3 +289,11 @@ export const capitalizeWords = (str) =>
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
+
+export const getImageForRace = (race) => {
+  const formattedRace = race
+    .toLowerCase()
+    .replace(/ /g, "_")
+    .replace(/-/g, "_");
+  return imageMappings[formattedRace] || null;
+};

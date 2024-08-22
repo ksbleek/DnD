@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useOutletContext, useNavigate } from "react-router-dom";
-import { imageMappings } from "../utilities";
+import { getImageForRace } from "../utilities";
 
 function Race() {
   const [races, setRaces] = useState([]);
@@ -52,15 +52,6 @@ function Race() {
   const handleSubmit = () => {
     setRace(selectedRace.name);
     navigate("class/"); // Navigate to the CharacterClasses component
-  };
-
-  // Get the image URL for a given race
-  const getImageForRace = (race) => {
-    const formattedRace = race
-      .toLowerCase()
-      .replace(/ /g, "_")
-      .replace(/-/g, "_");
-    return imageMappings[formattedRace] || null;
   };
 
   return (

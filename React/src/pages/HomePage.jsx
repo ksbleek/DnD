@@ -10,7 +10,7 @@ import {
   capitalizeWords,
 } from "../utilities";
 import { FaRegPenToSquare } from "react-icons/fa6";
-import { imageMappings } from "../utilities";
+import { getImageForRace } from "../utilities";
 
 function HomePage() {
   const { user } = useOutletContext();
@@ -105,11 +105,6 @@ function HomePage() {
     } catch (error) {
       console.error("Error adding character to party:", error);
     }
-  };
-
-  // Get the image URL for a given race using util imageMappings
-  const getImageForRace = (race) => {
-    return imageMappings[race.toLowerCase().replace(" ", "_")] || null;
   };
 
   return (
