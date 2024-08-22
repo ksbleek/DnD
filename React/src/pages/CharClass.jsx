@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useOutletContext } from "react-router-dom";
 
 function CharacterClasses() {
   const [classes, setClasses] = useState([]);
   const [selectedClass, setSelectedClass] = useState({});
   const [selectedClass2, setSelectedClass2] = useState({});
   const [classId, setClassId] = useState(null);
+  const { setClass } = useOutletContext();
 
   useEffect(() => {
     const fetchClasses = async () => {
@@ -57,6 +59,11 @@ function CharacterClasses() {
   const handleClick = (id) => {
     setClassId(id);
   };
+
+  const handleSubmit = () => {
+    setClass(selectedClass.name);
+  };
+
   return (
     <div className="create_page_container">
       <div className="race_list_container">
@@ -78,7 +85,7 @@ function CharacterClasses() {
             <p>Health: {selectedClass.hit_dice}</p>
             <p>Armor Proficiency: {selectedClass.prof_armor}</p>
             <p>Saving Throws: {selectedClass.prof_saving_throws}</p>
-            <p>
+            <div>
               Starting Equipment:<br></br>
               <ul>
                 {selectedClass2.starting_equipment.map((item) => (
@@ -88,11 +95,11 @@ function CharacterClasses() {
                   </li>
                 ))}
               </ul>
-            </p>
+            </div>
             <p className="desc-container">
               Description: {selectedClass.desc.replace(/#/g, "")}
             </p>
-            {/* Add more details as needed */}
+            <button onClick={handleSubmit}>Select</button>
           </div>
         )}
       </div>

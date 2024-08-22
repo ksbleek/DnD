@@ -1,29 +1,22 @@
 import { useState } from "react";
-import { useOutletContext, useNavigate } from "react-router-dom";
-import { userRegistration } from "../utilities";
+import { useOutletContext } from "react-router-dom";
+import { userLogIn } from "../utilities";
 
-const SignUp = () => {
+const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setUser } = useOutletContext();
-  const navigate = useNavigate(); // Initialize useNavigate
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const user = await userRegistration(email, password);
-      setUser(email);
-      navigate("/"); // Redirect to the main page
-    } catch (error) {
-      console.error("Sign up failed:", error);
-      alert("Sign up failed. Please try again.");
-    }
-  };
 
   return (
     <div className="form-container">
-      <h2>Sign Up</h2>
-      <form className="user_form" onSubmit={handleSubmit}>
+      <h2>Log In</h2>
+      <form
+        className="user_form"
+        onSubmit={async (e) => [
+          e.preventDefault(),
+          setUser(await userLogIn(email, password)),
+        ]}
+      >
         <div className="user_email">
           <label>Email:</label>
           <input
@@ -42,10 +35,10 @@ const SignUp = () => {
             required
           />
         </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit">Log in</button>
       </form>
     </div>
   );
 };
 
-export default SignUp;
+export default LogIn;

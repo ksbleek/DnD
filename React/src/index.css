@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
   box-sizing: border-box;
   padding: 0;
@@ -31,28 +32,46 @@ ul {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
-/* Nav */
+button {
+  background-color: var(--first-color);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: var(--font-semi-bold);
+  transition: background-color 0.3s;
+}
 
+button:hover {
+  background-color: #666;
+}
+
+/* Navbar */
 .nav {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
-  position: relative;
+  justify-content: center;
   height: var(--header-height);
-  /* margin: 1rem; */
-  border-bottom: solid white;
+  background-color: var(--body-color);
+  border-bottom: 1px solid var(--text-color);
 }
 
 .nav > h1 {
-  padding: 0 1rem 0 1rem;
+  padding: 0 1rem;
+}
+
+.nav__menu {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
 }
 
 .nav__list {
-  padding: 0 0 0 1rem;
   display: flex;
-  justify-content: space-evenly;
   column-gap: 1.5rem;
 }
 
@@ -66,14 +85,18 @@ a {
   color: var(--first-color);
 }
 
-.show-menu {
-  right: 0;
+.user_nav {
+  margin-right: 20px;
 }
 
-/* Fix below */
+.user_nav ul {
+  display: flex;
+  column-gap: 1.5rem;
+}
 
+/* Spell Card */
 .SpellCard {
-  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 255);
+  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.25);
   transition: 0.3s;
   padding: 2px 16px;
 }
@@ -84,6 +107,7 @@ a {
   justify-content: space-around;
 }
 
+/* Modal */
 .modal {
   position: fixed;
   top: 0;
@@ -111,41 +135,388 @@ a {
   display: none;
 }
 
-/* race list page */
+/* Common Styles for Pages */
 .create_page_container {
   display: flex;
   flex-direction: row;
+  padding: 20px;
 }
+
 .race_list_container {
   display: flex;
   flex-direction: column;
   width: 25%;
   overflow: auto;
   height: 100vh;
+  background-color: #222;
+  padding: 20px;
+  border-right: 1px solid var(--text-color);
 }
+
 .race_list {
   font-weight: bold;
   border: solid white;
-  margin-top: 0.5rem;
-  margin-left: 0.5rem;
-  padding: 2rem;
+  margin: 0.5rem 0;
+  padding: 1rem;
   color: black;
   background-color: rgba(253, 253, 250, 1);
   box-sizing: content-box;
-  width: 80%;
-}
-.col-2 {
-  width: 50%;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-/* classes desc css */
-.class-title {
-  text-align: center;
+.race_list:hover {
+  background-color: var(--first-color);
+  color: white;
 }
+
+.col-2 {
+  width: 75%;
+  padding: 20px;
+  background-color: #333;
+  color: var(--title-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.col-2 h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.col-2 p {
+  margin: 10px 0;
+}
+
+.col-2 ul {
+  padding-left: 20px;
+}
+
+.col-2 li {
+  margin: 5px 0;
+}
+
+.race-thumbnail {
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
 .desc-container {
   width: 100%;
-  overflow-y: auto; /* Enable vertical scrolling */
-  max-height: 300px; /* Adjust based on your needs */
-  white-space: pre-wrap; /* Preserve whitespace and line breaks */
-  word-wrap: break-word; /* Prevent overflow */
+  overflow-y: auto;
+  max-height: 300px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-top: 20px;
+}
+
+/* Party Page */
+h2 {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 2rem;
+  color: var(--title-color);
+}
+
+.Party_list_container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.Party_card {
+  background-color: #444;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.Party_title_display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.Party_title {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.Party_edit_button {
+  background: none;
+  border: none;
+  color: var(--title-color);
+  cursor: pointer;
+  font-size: 1.2rem;
+  position: absolute;
+  right: 0;
+  padding-left: 10px;
+}
+
+.Party_edit_button:hover {
+  color: var(--first-color);
+}
+
+.Party_Char_container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.Char_card {
+  background-color: #555;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.character-thumbnail {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.Party_delete_button {
+  background-color: #555;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.Party_delete_button:hover {
+  background-color: #666;
+}
+
+/* Home Page */
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 2rem;
+  color: var(--title-color);
+}
+
+.Char_list_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.character-card {
+  background-color: #444;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.character-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.Char_card_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.Char_card_title h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.Char_edit_btn {
+  background: none;
+  border: none;
+  color: var(--title-color);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.Char_edit_btn:hover {
+  color: var(--first-color);
+}
+
+.Char_submit_btn,
+.Char_delete_btn,
+.Char_party_btn {
+  background-color: #555;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.Char_submit_btn:hover,
+.Char_delete_btn:hover,
+.Char_party_btn:hover {
+  background-color: #666;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  background-color: #333;
+  color: white;
+  width: calc(100% - 120px);
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #555;
+  background-color: #333;
+  color: white;
+}
+
+/* New Character Form */
+.new-char-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.new-char-form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  background-color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap; /* Ensure items wrap if they don't fit in one line */
+}
+
+.new-char-form label {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.new-char-form input {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #444;
+  color: var(--title-color);
+}
+
+.new-char-form p {
+  margin: 0;
+  color: var(--title-color);
+}
+
+.new-char-form button {
+  background-color: var(--first-color);
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: var(--font-semi-bold);
+}
+
+.new-char-form button:hover {
+  background-color: hsl(28, 88%, 52%);
+}
+
+/* User pages */
+
+/* Container for the forms */
+.form-container {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  background-color: #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: var(--title-color);
+}
+
+/* Styling for the form heading */
+.form-container h2 {
+  margin-bottom: 20px;
+  color: var(--title-color);
+}
+
+/* Styling for form elements */
+.user_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.user_form label {
+  margin-bottom: 5px;
+  font-weight: var(--font-semi-bold);
+  text-align: left;
+  color: var(--title-color);
+}
+
+.user_form input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #444;
+  color: var(--title-color);
+}
+
+/* Styling for the submit button */
+.user_form button {
+  background-color: var(--first-color);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: var(--font-semi-bold);
+  transition: background-color 0.3s;
+}
+
+.user_form button:hover {
+  background-color: hsl(28, 88%, 52%);
 }

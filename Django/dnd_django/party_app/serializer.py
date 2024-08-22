@@ -12,4 +12,4 @@ class PartySerializer(serializers.ModelSerializer):
 class PartyCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Party
-        fields = ['name', 'player']
+        fields = ['name']

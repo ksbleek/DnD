@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Char_Nav() {
+function Char_Nav(name, race, char_class) {
   return (
     <nav className="nav container">
       <div className={"char_nav__menu"} id="Char-nav-menu">

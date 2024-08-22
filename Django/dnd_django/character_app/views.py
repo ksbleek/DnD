@@ -1,8 +1,11 @@
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.views import APIView
 from .models import Character, Characters_list
 from .serializers import CharacterSerializer
 from user_app.views import TokenReq
+from race_app.models import race
+from class_app.models import CharClass
 
 class CharacterListCreateView(TokenReq):
     def get(self, request):
@@ -11,17 +14,20 @@ class CharacterListCreateView(TokenReq):
         return Response(serializer.data)
 
     def post(self, request):
-    # Ensure the Characters_list exists for the authenticated user
+        # Ensure the Characters_list exists
         characters_list, created = Characters_list.objects.get_or_create(player=request.user)
+        print(f"Characters_list: {characters_list}, Created: {created}")
     
-    # Make a copy of request.data and set the char_list field to the primary key of the Characters_list instance
+        # Set the char_list field to the primary key of the Characters_list instance
         data = request.data.copy()
         data['char_list'] = characters_list.id
+        print(f"Request Data: {data}")
     
         serializer = CharacterSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        print(f"Serializer Errors: {serializer.errors}")
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CharacterDetailView(TokenReq):
@@ -43,8 +49,10 @@ class CharacterDetailView(TokenReq):
         character = self.get_object(pk, request.user)
         if character is None:
             return Response(status=status.HTTP_404_NOT_FOUND)
-        
-        serializer = CharacterSerializer(character, data=request.data)
+        name = request.data.get('name', None)
+        if name is None:
+            return Response({"error": "Name field is required."}, status=status.HTTP_400_BAD_REQUEST)
+        serializer = CharacterSerializer(character, data={'name': name}, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

@@ -15,13 +15,12 @@ class PartyListCreateView(TokenReq):
         return Response(serializer.data)
 
     def post(self, request):
-        data = request.data.copy()
-        data['player'] = request.user.id
-        serializer = PartyCreateSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            data = request.data.copy()
+            serializer = PartyCreateSerializer(data=data)
+            if serializer.is_valid():
+                party = serializer.save(player=request.user)
+                return Response(PartySerializer(party).data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class PartyDetailView(TokenReq):
     def get_object(self, pk, user):
